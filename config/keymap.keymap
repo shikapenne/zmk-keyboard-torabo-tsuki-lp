@@ -14,6 +14,15 @@
  */
 
 / {
+    /* scroll axis snap: only the dominant axis (vertical or horizontal) passes; a 150 ms pause releases the lock */
+    axis_snap: axis_snap {
+        compatible = "zmk,input-processor-axis-snap";
+        #input-processor-cells = <0>;
+        idle-ms = <150>;
+        decide-threshold = <4>;
+        switch-ratio = <3>;
+    };
+
     /* auto-mouse: like zip_temp_layer, but click keys / modifiers don't cancel the layer */
     auto_mouse: auto_mouse {
         compatible = "zmk,input-processor-temp-layer";
@@ -122,6 +131,7 @@
     scroller {
         layers = <4>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
+                            &axis_snap
                             &zip_xy_to_scroll_mapper
                             &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT
                             &zip_scroll_scaler 1 6>;
