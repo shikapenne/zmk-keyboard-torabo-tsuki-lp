@@ -1,0 +1,19 @@
+description: Input processor that snaps pointer motion to the dominant axis (X or Y)
+
+compatible: "zmk,input-processor-axis-snap"
+
+include: ip_zero_param.yaml
+
+properties:
+  idle-ms:
+    type: int
+    default: 150
+    description: A pause longer than this releases the axis lock.
+  decide-threshold:
+    type: int
+    default: 4
+    description: Accumulated movement counts needed before an axis is chosen. Nothing is output until then.
+  switch-ratio:
+    type: int
+    default: 3
+    description: The other axis must exceed the locked axis by this factor to switch axes without pausing.
