@@ -1,0 +1,24 @@
+description: Temp-layer input processor whose hold timer is also restarted by key presses
+
+compatible: "zmk,input-processor-temp-layer-ext"
+
+include: ip_two_param.yaml
+
+properties:
+  require-prior-idle-ms:
+    type: int
+    required: false
+    default: 0
+    description: Time in milliseconds that must pass after the last keystroke before the layer can be toggled
+
+  excluded-positions:
+    type: array
+    required: false
+    default: []
+    description: Key positions that will NOT deactivate the layer when pressed
+
+  extend-positions:
+    type: array
+    required: false
+    default: []
+    description: Key positions that restart the hold timer when pressed while the layer is active
