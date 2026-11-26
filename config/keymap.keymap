@@ -116,7 +116,7 @@
 &pointing_listener {
     /* ball movement -> cursor, and enable layer 3 (auto-mouse) for 600 ms */
     input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-                        &auto_mouse 3 600>;
+                        &auto_mouse 3 1000>;
 
     /* while layer 4 is active, ball movement becomes scrolling */
     scroller {
@@ -124,6 +124,6 @@
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
                             &zip_xy_to_scroll_mapper
                             &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT
-                            &zip_scroll_scaler 1 4>;
+                            &zip_scroll_scaler 1 6>;
     };
 };
