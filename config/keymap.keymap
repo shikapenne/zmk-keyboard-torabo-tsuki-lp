@@ -32,27 +32,6 @@
         extend-positions = <19 20 21>;
     };
 
-    /* layer 0 only: simultaneous-press macros (ignored while typing quickly) */
-    combos {
-        compatible = "zmk,combos";
-
-        combo_esc {
-            bindings = <&kp ESC>;
-            key-positions = <13 14>; /* Q + W */
-            timeout-ms = <40>;
-            require-prior-idle-ms = <100>;
-            layers = <0>;
-        };
-
-        combo_tab {
-            bindings = <&kp TAB>;
-            key-positions = <25 26>; /* A + S */
-            timeout-ms = <40>;
-            require-prior-idle-ms = <100>;
-            layers = <0>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
