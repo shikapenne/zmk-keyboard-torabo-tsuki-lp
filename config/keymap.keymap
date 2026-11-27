@@ -23,11 +23,11 @@
         switch-ratio = <3>;
     };
 
-    /* rotate ball movement counter-clockwise by 30 degrees (thumb hits the ball diagonally); change angle to tune */
+    /* rotate ball movement clockwise by 45 degrees (thumb moves along a diagonal); positive = counter-clockwise, negative = clockwise */
     ball_rotate: ball_rotate {
         compatible = "zmk,input-processor-rotate";
         #input-processor-cells = <0>;
-        angle = <30>;
+        angle = <(-45)>;
     };
 
     /* auto-mouse: like zip_temp_layer, but click keys / modifiers don't cancel the layer, and clicks extend it */
