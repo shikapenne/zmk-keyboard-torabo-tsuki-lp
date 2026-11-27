@@ -23,13 +23,6 @@
         switch-ratio = <3>;
     };
 
-    /* rotate ball movement clockwise by 45 degrees (thumb moves along a diagonal); positive = counter-clockwise, negative = clockwise */
-    ball_rotate: ball_rotate {
-        compatible = "zmk,input-processor-rotate";
-        #input-processor-cells = <0>;
-        angle = <(-45)>;
-    };
-
     /* auto-mouse: like zip_temp_layer, but click keys / modifiers don't cancel the layer, and clicks extend it */
     auto_mouse: auto_mouse {
         compatible = "zmk,input-processor-temp-layer-ext";
@@ -97,14 +90,12 @@
 &pointing_listener {
     /* ball movement -> cursor, and enable layer 3 (auto-mouse) for 600 ms */
     input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-                        &ball_rotate
                         &auto_mouse 3 1000>;
 
     /* while layer 4 is active, ball movement becomes scrolling */
     scroller {
         layers = <4>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-                            &ball_rotate
                             &axis_snap
                             &zip_xy_to_scroll_mapper
                             &zip_scroll_transform INPUT_TRANSFORM_Y_INVERT
